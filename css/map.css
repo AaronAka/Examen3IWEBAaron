@@ -1,0 +1,32 @@
+@charset "utf-8";
+body { background-color: #ffffff; color: black; }
+
+a img { border:none; }
+
+#topleft {
+	float: left;
+	height: 85px;
+	width: 500px;
+}
+
+#topmiddle {
+	height: 85px;
+	margin: 0px;
+	padding: 0px 10px 5px 10px;
+}
+
+#topright {
+	float: right;
+	height: 85px;
+	width: 500px;
+	margin-top: -90px;
+}
+
+#map {
+	position: absolute;
+	top: 100px; right: 0; bottom: 0; left: 0;
+	border: 1px solid black;
+	background-color: #cbced5;
+}
+
+img[src="http://openlayers.org/api/img/slider.png"]  { top: -6px; }
