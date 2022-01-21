@@ -1,7 +1,7 @@
 <?php
     session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $url = "http://localhost:3000/travels/edit/".$_POST['id'];
+        $url = "https://examen3aaroniweb.herokuapp.com/travels/edit/".$_POST['id'];
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -32,9 +32,9 @@
         header('Location: edit_viaje.php');
     }
     else {
-        $res = file_get_contents("http://localhost:3000/travels/edit/".$_GET['id']);
+        $res = file_get_contents("https://examen3aaroniweb.herokuapp.com/travels/edit/".$_GET['id']);
         $data = json_decode($res); 
-        $resUsers = file_get_contents("http://localhost:3000/");
+        $resUsers = file_get_contents("https://examen3aaroniweb.herokuapp.com/");
         $dataUsers = json_decode($resUsers);
         include "../includes/header.php";
     }
@@ -48,7 +48,7 @@
         echo "<br>";
         foreach($data->data->viaje[0]->id_pasajeros as $pasajero){
             if(!empty($pasajero)){
-                $resAux = file_get_contents("http://localhost:3000/users/edit/".$pasajero);
+                $resAux = file_get_contents("https://examen3aaroniweb.herokuapp.com/users/edit/".$pasajero);
                 $dataAux = json_decode($resAux); 
                 ?>
                 <p> - <?php echo $dataAux->data->usuario[0]->nombre. " ".$dataAux->data->usuario[0]->apellido; ?></p> <br>

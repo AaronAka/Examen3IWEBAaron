@@ -1,9 +1,9 @@
 <?php 
-    $resTravel = file_get_contents("http://localhost:3000/travels/edit/".$_GET['id']);
+    $resTravel = file_get_contents("https://examen3aaroniweb.herokuapp.com/travels/edit/".$_GET['id']);
     $dataTravel = json_decode($resTravel);
     $viaje = $dataTravel->data->viaje[0];
 
-    $resConductor = file_get_contents("http://localhost:3000/users/edit/".$viaje->id_conductor);
+    $resConductor = file_get_contents("https://examen3aaroniweb.herokuapp.com/users/edit/".$viaje->id_conductor);
     $dataConductor = json_decode($resConductor);
     $conductor = $dataConductor->data->usuario[0];
 

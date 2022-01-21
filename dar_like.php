@@ -5,7 +5,7 @@
 
     $uwu = "uwu";
     var_dump($uwu);?> <h1>uwu</h1> <?php
-    $urlEndpoint = 'http://localhost:3000/images/edit/'.$_POST['id'];
+    $urlEndpoint = 'https://examen3aaroniweb.herokuapp.com/images/edit/'.$_POST['id'];
 
     var_dump($urlEndpoint);
     

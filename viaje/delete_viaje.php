@@ -2,7 +2,7 @@
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $url = 'http://localhost:3000/travels/delete';
+        $url = 'https://examen3aaroniweb.herokuapp.com/travels/delete';
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

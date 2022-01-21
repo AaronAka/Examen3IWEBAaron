@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $data = file_get_contents("http://localhost:3000/findUserByEmail/" . $_POST['email']);
+    $data = file_get_contents("https://examen3aaroniweb.herokuapp.com/findUserByEmail/" . $_POST['email']);
     $user = json_decode($data);
 
     if (!empty($user->data->usuarios)){

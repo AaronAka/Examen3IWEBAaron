@@ -1,8 +1,8 @@
 <?php
     session_start();
-    $res = file_get_contents("http://localhost:3000/conversaciones/".$_GET['id']);
+    $res = file_get_contents("https://examen3aaroniweb.herokuapp.com/conversaciones/".$_GET['id']);
     $data = json_decode($res);
-    // $resViajes = file_get_contents("http://localhost:3000/listaviajes");
+    // $resViajes = file_get_contents("https://examen3aaroniweb.herokuapp.com/listaviajes");
     // $dataViajes = json_decode($resViajes);
 ?>
 

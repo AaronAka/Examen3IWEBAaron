@@ -1,6 +1,6 @@
 <?php
 session_start();
-$url = 'http://localhost:3000/conversations/add';
+$url = 'https://examen3aaroniweb.herokuapp.com/conversations/add';
     
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

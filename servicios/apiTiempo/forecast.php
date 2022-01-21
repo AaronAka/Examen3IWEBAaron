@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $res = file_get_contents("http://localhost:3000/weather/forecast/".$_GET['location']."&".$_GET['days']);
+    $res = file_get_contents("https://examen3aaroniweb.herokuapp.com/weather/forecast/".$_GET['location']."&".$_GET['days']);
     $data = json_decode($res);
 
     include '../../includes/header.php';

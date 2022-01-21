@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $res = file_get_contents("http://localhost:3000/");
+    $res = file_get_contents("https://examen3aaroniweb.herokuapp.com/");
     $dataUsers = json_decode($res);
     $filtro = "";
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,7 +12,7 @@
         }
     }
 
-    $url = "http://localhost:3000/images/filtro/";
+    $url = "https://examen3aaroniweb.herokuapp.com/images/filtro/";
     $url = $url . $filtro;
     $resImagenes = file_get_contents($url);
     $dataImagenes = json_decode($resImagenes);
@@ -28,7 +28,7 @@
         $email = $_SESSION['usuario']['email'];
 
         // Compruebo si el email existe en la BD
-        $data = file_get_contents("http://localhost:3000/findUserByEmail/" . $email);
+        $data = file_get_contents("https://examen3aaroniweb.herokuapp.com/findUserByEmail/" . $email);
         $user = json_decode($data);
 
         // Si existe -> me traigo su información y lo guardo

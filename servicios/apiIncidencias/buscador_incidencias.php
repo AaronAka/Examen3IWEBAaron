@@ -12,7 +12,7 @@ if (isset($_GET['provincia']) && $_GET['provincia'] !== ''){
 }
 
 if ($busqueda !== ''){
-    $url = 'http://localhost:3000/incidencia/' . $busqueda . '/' . strtoupper($_GET[$busqueda]);
+    $url = 'https://examen3aaroniweb.herokuapp.com/incidencia/' . $busqueda . '/' . strtoupper($_GET[$busqueda]);
 
     $res = file_get_contents($url);
     $data = json_decode($res);

@@ -33,7 +33,7 @@ if (($file_size > 2*1024*1024)){
         $url=$pms['data']['link'];
      }
     
-     $urlEndpoint = 'http://localhost:3000/images/add';
+     $urlEndpoint = 'https://examen3aaroniweb.herokuapp.com/images/add';
     
      $ch = curl_init();
      curl_setopt($ch, CURLOPT_URL, $urlEndpoint);
