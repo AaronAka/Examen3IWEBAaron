@@ -12,13 +12,13 @@
         }
     }
 
-    $url = "https://examen3aaroniweb.herokuapp.com/images/filtro/";
+    $url = "https://examen3aaroniweb.herokuapp.com/articulos/filtro/";
     $url = $url . $filtro;
-    $resImagenes = file_get_contents($url);
-    $dataImagenes = json_decode($resImagenes);
+    $resArticulos = file_get_contents($url);
+    $dataArticulos = json_decode($resArticulos);
     
 
-    /*if(isset($_SESSION['server_msg'])){
+    if(isset($_SESSION['server_msg'])){
         echo $_SESSION['server_msg'];
         unset($_SESSION['server_msg']);
     }
@@ -40,52 +40,55 @@
         // Si no existe -> lo inserto en la BD e inicializo sus valores
             header('Location: /funciones/nuevo_usuario.php');
         }
-    }*/
+    }
 
 
-
+    var_dump($_SESSION);
     ?>
-    
-    <form action="crear_imagen.php" method="GET">
-        <input type="submit" value="Subir Imagen">
+   
+    <form action="./articulos/subir_articulo.php" method="GET">
+        <input type="hidden" value="<?php echo $_SESSION['usuario']->_id ?>" name="id">
+        <input type="submit" value="Subir Articulo">
     </form>
 
     <table>
         <tr>
-            <th>Imagen</th>
+            <th>ID</th>
             <th>Descripcion</th>
-            <th>Numero de Likes</th>
+            <th>Precio</th>
             <th></th>
 
         </tr>
             <?php 
-                foreach ($dataImagenes->data->imagenes as $imagen){ ?>                
+                foreach ($dataArticulos->data->articulos as $articulo){?>                
                     <tr>
-                        <td><img src="<?php echo $imagen->imagen; ?>" width="400" height="500"></td>
-                        <td><?php echo $imagen->descripcion; ?></td>
-                        <td><?php echo $imagen->numeroLikes; ?></td>
-                        <form action="dar_like.php" method="POST">
-                        <input type="hidden" id="id" name="id" value="<?php echo $imagen->_id?>">
-                        <input type="hidden" id="imagen" name="imagen" value="<?php echo $imagen->imagen?>">
-                        <input type="hidden" id="filtro" name="filtro" value="<?php echo $filtro ?>">
-                        <input type="hidden" id="descripcion" name="descripcion" value="<?php echo $imagen->descripcion?>">
-                        <?php $like = $imagen->numeroLikes + 1; ?>
-                        <input type="hidden" id="numeroLikes" name="numeroLikes" value="<?php echo $like?>">
-                        <td><input type="submit" value="like"></td>
-                        
-
+                        <!-- <td><img src="<?php echo $imagen->imagen; ?>" width="400" height="500"></td> -->
+                        <td><?php echo $articulo->_id; ?></td>
+                        <td><?php echo $articulo->descripcion; ?></td>
+                        <td><?php echo $articulo->precio_salida; ?></td>
+                        <?php if($_SESSION['usuario']->_id == $articulo->vendedor){?>
+                            <form action="./articulos/subir_imagen.php" method="GET">
+                                 <input type="hidden" name="id" value="<?php echo $articulo->_id; ?>">
+                            <td><input type="submit" value="Añadir foto"></td>
+                        <?php } else { ?>
+                            <form action="./pujas/nueva_puja.php" method="GET">
+                                 <input type="hidden" name="id" value="<?php echo $articulo->_id; ?>">
+                                 <input type="hidden" name="id_persona" value="<?php echo $_SESSION['usuario']->_id; ?>">
+                                 <input type="hidden" name="email" value="<?php echo $_SESSION['usuario']->email; ?>">
+                            <td><input type="submit" value="Pujar"></td>
                         </form>
                         
-                        <?php } ?>
+                        <?php }} ?>
                     </tr>
     </table>
+    <form action="mapatest.php" method="GET">
+        <input type="submit" value="Mapa">
+    </form>
     <form action="index.php" method="POST">
         <input type="text" id="filtro" name="filtro">
         <input type="submit" value="Filtrar">
     </form>
-    <form action="mapatest.php" method="GET">
-        <input type="submit" value="Mapa">
-    </form>
+    <a href="./logout.php" >Cerrar sesion </a>
     <?php
 
     
